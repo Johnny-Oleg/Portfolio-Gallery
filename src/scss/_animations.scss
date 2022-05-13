@@ -1,0 +1,13 @@
+.rotation {
+	-webkit-animation: rotation 4s infinite linear;
+		animation: rotation 4s infinite linear;
+}
+
+@keyframes rotation {
+	from {
+		transform: rotate3D(0, 0.5, 0, 0deg);
+	}
+	to {
+		transform: rotate3D(0, 0.5, 0, 180deg);;
+	}
+}

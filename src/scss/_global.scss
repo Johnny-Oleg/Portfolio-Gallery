@@ -3,6 +3,15 @@ body {
 	height: 100%;
 }
 
+body {
+	font-family: 'Montserrat Alternates', sans-serif;
+	//font-family: 'Nunito', sans-serif;
+	//font-family: 'Orbitron', sans-serif; //!
+	// font-family: 'Righteous', cursive; //!
+	// font-family: 'Source Code Pro', monospace;
+	color: #000000;
+}
+
 .wrapper {
 	display: flex;
 	flex-direction: column;
@@ -18,7 +27,7 @@ body {
 }
 
 .container {
-	max-width: 1200px;
+	max-width: 1370px;
 	margin: 0 auto;
 	padding: 0 15px;
 }
