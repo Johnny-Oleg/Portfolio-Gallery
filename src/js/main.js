@@ -1,6 +1,9 @@
 'use strict';
 
 const $grid = document.querySelector('.cases__grid');
+const $decor = document.querySelectorAll('.decor');
+
+const decors = [...$decor];
 
 const cases = [
     {

@@ -36,7 +36,8 @@
 .about {
 	height: 80vh;
 	padding: 20px 0;
-	background: linear-gradient(90deg, #efd5ff 0%, #515ada 100%);
+	//background: linear-gradient(90deg, #efd5ff 0%, #515ada 100%);
+	background: linear-gradient(90deg, #515ada  0%, #efd5ff 100%);
 
 	//background-color: #8EC5FC;
 	//background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
@@ -63,27 +64,72 @@
 
 	//background-color: #FF3CAC;
 	//background-image: linear-gradient(225deg, #FF3CAC 0%, #784BA0 50%, #2B86C5 100%);
-
+	position: relative;
 
 	&__hero {
 		width: 400px;
 		height: 400px;
-		background: rgb(2,17,138);
-		background: linear-gradient(90deg, rgba(2,17,138,1) 0%, rgba(70,181,239,1) 70%, rgba(96,214,246,1) 100%);
+		// background: rgb(2,17,138);
+		// background: linear-gradient(90deg, rgba(2,17,138,1) 0%, rgba(70,181,239,1) 70%, rgba(96,214,246,1) 100%);
 		position: relative;
+		margin-left: 50px;
 		margin-bottom: 20px;
 		display: inline-block;
-		// transform: rotate(45deg);
+		// transform: rotateZ(45deg);
+		z-index: 2;
+
+		background: rgba(255, 255, 255, 0.2);
+    	border-radius: 16px;
+    	box-shadow: 0 4px 30px rgb(0 0 0 / 10%);
+    	backdrop-filter: blur(5px);
+    	-webkit-backdrop-filter: blur(5px);
+    	border: 1px solid rgba(255, 255, 255, 0.3);
 	}
 }
 
+.decor {
+	background-color: #FE3D5E;
+    width: 57px;
+    height: 57px;
+    border-radius: 8px;
+    transform: rotate(45deg);
+    position: absolute;
+    z-index: 2;
+}
+
+.--one {
+	left: 5%;
+    bottom: -70px;
+}
+
+.--two {
+	left: 15%;
+    top: -70px;
+}
+
+.--three {
+	left: 35%;
+    z-index: 3;
+    bottom: -70px;
+    animation-delay: 1s;
+}
+
+.--four {
+	bottom: 7%;
+    left: 65%;
+}
+
+.small {
+	max-width: 400px;
+	max-height: 100px;
+}
 
 .rotate__animate {
 	width: 300px;
 	height: auto;
 	position: absolute;
-	left: 0;
-	top: 0;
+	top: 10%;
+	left: 12%;
 	transform-style: preserve-3d;
 	transition: all 0.5s ease;
 }
@@ -93,7 +139,7 @@
 	height: auto;
 	position: absolute;
 	border-radius: 50%;
-	backface-visibility: hidden;
+	backface-visibility: hidden;	
 }
 
 .rotate__animate-img--back {
@@ -103,7 +149,7 @@
 	border-radius: 50%;
 	position: absolute;
 	backface-visibility: hidden;
-	transform: rotateY(180deg);
+	transform: rotateY(180deg);	
 }
 
 .gallery {
