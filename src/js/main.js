@@ -1,14 +1,25 @@
 'use strict';
 
-const $grid = document.querySelector('.cases__grid');
-const $decor = document.querySelectorAll('.decor');
+import Bot from './bot.js';
 
-const decors = [...$decor];
+const $grid = document.querySelector('.cases__grid');
+const $decors = document.querySelectorAll('.decor');
+
+// const colors = ['#61daf9', '#764abc', '#de3433', '#53b883'];
+const colors = ['react', 'redux', 'angular', 'vue'];
+
+// function randomInteger(min, max) {
+//     return Math.floor(Math.random() * (max - min)) + min;
+// }
+
+const random = arr => arr[Math.floor(Math.random() * arr.length)];
+
+$decors.forEach(item => item.classList.add(random(colors)));
 
 const cases = [
     {
         case: 1,
-        title: "John's Blog",
+        title: 'John\'s Blog',
         desc: 'Blog with 4 pages',
         img: "john's-blog.png",
         src: 'https://johnny-oleg.github.io/John-s-Blog/',

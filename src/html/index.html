@@ -7,6 +7,9 @@
 	<title>Portfolio Gallery</title>
 	<link rel="shortcut icon" type="image/x-icon" href="images/johnny-neojiny-avatar.ico">
 	<link rel="stylesheet" href="css/style.min.css">
+		<script src="js/bot.js" type="module" defer></script>
+
+	<script src="js/main.js" type="module" defer></script>
 </head>
 <body>
 
@@ -27,23 +30,32 @@
 			<div class="decor --one float"></div>
 			<div class="decor --two float2"></div>
 			<div class="decor --three float3"></div>
-			<div class="decor --four"></div>
+			<div class="decor --four float5"></div>
 			<div class="container">
-				<div class="about__hero">
-					<div class="rotate__animate rotation">
-						<img 
-							class="rotate__animate-img--front" 
-							src="images/johnny-neojiny-avatar.png" 
-							alt="hero image"
-						>
-						<img 
-							class="rotate__animate-img--back" 
-							src="images/johnny-neojiny-avatar.png" 
-							alt="hero image"
-						>
+				<div class="about__content">
+					<div class="about__hero">
+						<div class="rotate__animate rotation">
+							<img 
+								class="rotate__animate-img--front" 
+								src="images/johnny-neojiny-avatar.png" 
+								alt="hero image"
+							>
+							<img 
+								class="rotate__animate-img--back" 
+								src="images/johnny-neojiny-avatar.png" 
+								alt="hero image"
+							>
+						</div>
+					</div>
+					<div class="bot">
+						<div class="chatarea-main">
+							<div class="chatarea-outer"></div>
+						</div>
+						<div class="bot__img">
+							<img src="images/bot/4712015.png" alt="bot image">
+						</div>
 					</div>
 				</div>
-				<div class="bot"></div>
 			</div>
 		</section>
 
@@ -67,6 +79,5 @@
 
 	<!-- @@include('./components/_footer.html') -->
 	
-	<script src="js/main.js"></script>
 </body>
 </html>

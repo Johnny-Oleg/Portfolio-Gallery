@@ -27,6 +27,11 @@
 	animation: float3 16s linear infinite;
 }
 
+.float5 {
+	-webkit-animation: float5 16s linear infinite;
+	animation: float5 16s linear infinite;
+}
+
 @keyframes float {
     from {
         bottom: -70px;
@@ -73,11 +78,11 @@
 
 @keyframes float5 {
     to {
-        bottom: 0%;
+        right: 100%;
         transform: rotate(45deg) scale(0.7);
     }
     from {
-        bottom: 100%;
+        right: 0;
         transform: rotate(345deg) scale(0.7);
     }
 }

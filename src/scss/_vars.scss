@@ -1,5 +1,30 @@
+$react: #61daf9;
+$redux: #764abc;
+$angular: #de3433;
+$vue: #53b883;
+
 @mixin flex($content) {
 	display: flex;
 	justify-content: $content;
 	align-items: center;
+}
+
+@mixin bg-color($color) {
+	background-color: $color;
+}
+
+.react {
+	@include bg-color($react);
+}
+
+.redux {
+	@include bg-color($redux);
+}
+
+.angular {
+	@include bg-color($angular);
+}
+
+.vue {
+	@include bg-color($vue);
 }
