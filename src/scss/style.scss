@@ -36,8 +36,8 @@
 .about {
 	height: 600px;
 	padding: 20px 0;
-	//background: linear-gradient(90deg, #efd5ff 0%, #515ada 100%);
-	background: linear-gradient(90deg, #515ada  0%, #efd5ff 100%);
+	background-color: #FFFFFF;
+	//background: linear-gradient(90deg, #515ada  0%, #efd5ff 100%);
 
 	//background-color: #8EC5FC;
 	//background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
@@ -69,18 +69,17 @@
 	&__content {
 		@include flex(space-between);
 		align-items: end;
+		gap: 30px;
 	}
 
 	&__hero {
 		width: 500px;
 		height: 500px;
-		// background: rgb(2,17,138);
-		// background: linear-gradient(90deg, rgba(2,17,138,1) 0%, rgba(70,181,239,1) 70%, rgba(96,214,246,1) 100%);
 		position: relative;
 		margin-left: 50px;
 		margin-bottom: 20px;
 		display: inline-block;
-		// transform: rotateZ(45deg);
+		// transform: rotateZ(45deg); //TODO
 		z-index: 2;
 
 		background: rgba(255, 255, 255, 0.2);
@@ -100,6 +99,13 @@
     transform: rotate(45deg);
     position: absolute;
     z-index: 2;
+
+	&:hover {
+		-webkit-animation-play-state: paused;
+		-moz-animation-play-state: paused;
+		-o-animation-play-state: paused;
+		animation-play-state: paused;
+	}
 }
 
 .--one {
@@ -159,20 +165,48 @@
 }
 
 .bot {
+	flex: 1 0 50%;
 	display: flex;
 
 	&__img {
 		max-width: 200px;
 		max-height: 200px;
+		align-self: flex-end;
+	}
+
+	.chatarea-main {
+		flex-basis: 500px;
+		max-width: 500px;
+		height: auto;
+				background-color: transparent;
+
 	}
 
 	.chatarea-outer {
-		max-height: 350px;
-		overflow-y: scroll;
+		max-height: 360px;
+		background-color: transparent;
+		overflow-y: auto;
+
+		width: 100%;
+    	//max-height: 500px;
+    	scroll-behavior: smooth;
+    	hyphens: auto;
+		padding: 0 20px;
+		scrollbar-width: none;
+
+		&::-webkit-scrollbar {
+			display: none;
+		}
 	}
 
 	.botarea-inner {
-		margin-bottom: 10px;
+		margin-bottom: 30px;		
+		animation: floatup .5s forwards;	
+	}
+
+	.botarea-inner span {
+		//display: inline-block;
+		// margin-bottom: 30px;
 		padding: 10px;
 		font-family: 'Orbitron', sans-serif;
 		font-size: 20px;
@@ -184,15 +218,14 @@
     	backdrop-filter: blur(5px);
     	-webkit-backdrop-filter: blur(5px);
     	border: 1px solid rgba(255, 255, 255, 0.3);
-		
+		//animation: floatup .5s forwards;	
 	}
-
-	
 }
 
 .gallery {
 	padding: 30px 0 30px;
-	background-color: #f5f7fe;
+	//background-color: #f5f7fe;
+	background-color: #f2f2f8;
 }
 
 .cases__grid {

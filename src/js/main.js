@@ -1,9 +1,10 @@
 'use strict';
 
-import Bot from './bot.js';
+import botVoice from './bot.js';
 
 const $grid = document.querySelector('.cases__grid');
 const $decors = document.querySelectorAll('.decor');
+const $bot = document.querySelector('.bot__img');
 
 // const colors = ['#61daf9', '#764abc', '#de3433', '#53b883'];
 const colors = ['react', 'redux', 'angular', 'vue'];
@@ -74,3 +75,8 @@ const renderElem = elem => {
 const renderGrid = () => cases.forEach(item => renderElem(item));
 
 window.addEventListener('load', renderGrid());
+
+$bot.addEventListener('click', () => {
+    botVoice();
+    console.log('Activated');
+})

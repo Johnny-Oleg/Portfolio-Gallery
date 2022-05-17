@@ -2,19 +2,19 @@
 
 const $chatAreaMain = document.querySelector('.chatarea-main');
 const $chatAreaOuter = document.querySelector('.chatarea-outer');
-const $bot = document.querySelector('.bot__img');
 
 const hello = [
-    'Hello! Welcome to my Master\'s Gallery',
-    'Hi',
-    'Hello, ',
-]
+    "Hello! Welcome to my Master's Gallery",
+    "Hi, welcome to my Master's Gallery",
+];
 
 const showBotMsg = botMsg => {
-    let output = '';
+    const $msg = `
+        <p class="botarea-inner">
+            <span>${botMsg}</span> 
+        </p>`;
 
-    output += `<p class="botarea-inner">${botMsg}</p>`;
-    $chatAreaOuter.innerHTML += output;
+    $chatAreaOuter.insertAdjacentHTML('beforeend', $msg);
 
     return $chatAreaOuter;
 }
@@ -22,7 +22,6 @@ const showBotMsg = botMsg => {
 const botVoice = message => {
     const speech = new SpeechSynthesisUtterance();
 
-    speech.text = 'This is test message';
 	speech.text =  hello[Math.floor(Math.random() * hello.length)];
         // if (message.includes('who are you')) {
         //     const finalResult = intro[Math.floor(Math.random() * hello.length)];
@@ -35,21 +34,4 @@ const botVoice = message => {
     $chatAreaMain.append(showBotMsg(speech.text));
 }
 
-// recognition.onresult = e => {
-//     const resultIndex = e.resultIndex;
-//     const transcript = e.results[resultIndex][0].transcript;
-
-//     $chatAreaMain.append(showUserMsg(transcript));
-
-//     botVoice(transcript);
-
-//     console.log(transcript, e);
-// }
-
-$bot.addEventListener('click', () => {
-
-    botVoice();
-    console.log('Activated');
-})
-
-export default null;
+export default botVoice;
