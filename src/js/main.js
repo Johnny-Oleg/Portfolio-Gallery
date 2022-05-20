@@ -2,18 +2,32 @@
 
 import botVoice from './bot.js';
 
-const $grid = document.querySelector('.cases__grid');
 const $decors = document.querySelectorAll('.decor');
+const $switches = document.querySelectorAll('.header__top-wrapper');
 const $bot = document.querySelector('.bot__img');
+const $grid = document.querySelector('.cases__grid');
 
-// const colors = ['#61daf9', '#764abc', '#de3433', '#53b883'];
 const colors = ['react', 'redux', 'angular', 'vue'];
+// const colors = ['#61daf9', '#764abc', '#de3433', '#53b883'];
 
 // function randomInteger(min, max) {
 //     return Math.floor(Math.random() * (max - min)) + min;
 // }
 
 const random = arr => arr[Math.floor(Math.random() * arr.length)];
+
+const isDark = () => localStorage.getItem('dark');
+
+const toggleClass = () =>
+    document.querySelector('body').classList.toggle('dark');
+
+const toggleLocalStorageItem = () => {
+    isDark()
+        ? localStorage.removeItem('dark')
+        : localStorage.setItem('dark', 'set');
+}
+
+isDark() && toggleClass();
 
 $decors.forEach(item => item.classList.add(random(colors)));
 
@@ -74,9 +88,15 @@ const renderElem = elem => {
 
 const renderGrid = () => cases.forEach(item => renderElem(item));
 
-window.addEventListener('load', renderGrid());
+$switches.forEach(item => {
+    item.addEventListener('click', () => {     
+        toggleLocalStorageItem();
+        toggleClass();
+    })
+})
 
 $bot.addEventListener('click', () => {
     botVoice();
-    console.log('Activated');
 })
+
+window.addEventListener('load', renderGrid());

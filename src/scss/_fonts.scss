@@ -1,25 +1,43 @@
 @font-face {
-	font-family: 'Montserrat Alternates', sans-serif;
-	src: url('../fonts/Montserrat-Alternates.woff2') format('woff2'),
-		url('../fonts/Montserrat-Alternates.woff') format('woff');
+	font-family: 'MontserratAlternates-Regular', sans-serif;
+	src: url('../fonts/MontserratAlternates-Regular.woff2') format('woff2'),
+		url('../fonts/MontserratAlternates-Regular.woff') format('woff');
 	font-weight: 400;
 	font-style: normal;
 	font-display: swap;
 }
 
 @font-face {
-	font-family: 'Montserrat Alternates', sans-serif;
-	src: url('../fonts/Montserrat-Alternates.woff2') format('woff2'),
-		url('../fonts/Montserrat-Alternates.woff') format('woff');
+	font-family: 'MontserratAlternates-Medium', sans-serif;
+	src: url('../fonts/MontserratAlternates-Medium.woff2') format('woff2'),
+		url('../fonts/MontserratAlternates-Medium.woff') format('woff');
 	font-weight: 500;
 	font-style: normal;
 	font-display: swap;
 }
 
 @font-face {
+	font-family: 'MontserratAlternates-SemiBold', sans-serif;
+	src: url('../fonts/MontserratAlternates-SemiBold.woff2') format('woff2'),
+		url('../fonts/MontserratAlternates-SemiBold.woff') format('woff');
+	font-weight: 600;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
+	font-family: 'MontserratAlternates-Bold', sans-serif;
+	src: url('../fonts/MontserratAlternates-Bold.woff2') format('woff2'),
+		url('../fonts/MontserratAlternates-Bold.woff') format('woff');
+	font-weight: 700;
+	font-style: normal;
+	font-display: swap;
+}
+
+@font-face {
 	font-family: 'Orbitron', sans-serif;
-	src: url('../fonts/Orbitron.woff2') format('woff2'),
-		url('../fonts/Orbitron.woff') format('woff');
+	src: url('../fonts/Orbitron-Regular.woff2') format('woff2'),
+		url('../fonts/Orbitron-Regular.woff') format('woff');
 	font-weight: 400;
 	font-style: normal;
 	font-display: swap;
@@ -27,11 +45,10 @@
 
 @font-face {
 	font-family: 'Orbitron', sans-serif;
-	src: url('../fonts/Orbitron.woff2') format('woff2'),
-		url('../fonts/Orbitron.woff') format('woff');
+	src: url('../fonts/Orbitron-Medium.woff2') format('woff2'),
+		url('../fonts/Orbitron-Medium.woff') format('woff');
 	font-weight: 500;
 	font-style: normal;
 	font-display: swap;
 }
-
-@import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@300;400;500;600;700&family=Nunito:wght@300;400;500;600;700&family=Orbitron:wght@400;500;600;700&family=Righteous&family=Source+Code+Pro:wght@300;400;500;600;700&display=swap');
+// @import url('https://fonts.googleapis.com/css2?family=Montserrat+Alternates:wght@400;500;600;700&family=Orbitron:wght@400;500&display=swap');

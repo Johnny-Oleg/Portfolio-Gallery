@@ -1,7 +1,7 @@
 'use strict';
 
-const $chatAreaMain = document.querySelector('.chatarea-main');
-const $chatAreaOuter = document.querySelector('.chatarea-outer');
+const $chatAreaMain = document.querySelector('.chatarea__main');
+const $chatAreaOuter = document.querySelector('.chatarea__outer');
 
 const hello = [
     "Hello! Welcome to my Master's Gallery",
@@ -10,7 +10,7 @@ const hello = [
 
 const showBotMsg = botMsg => {
     const $msg = `
-        <p class="botarea-inner">
+        <p class="botarea__inner">
             <span>${botMsg}</span> 
         </p>`;
 
