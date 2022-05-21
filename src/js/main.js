@@ -6,6 +6,7 @@ const $decors = document.querySelectorAll('.decor');
 const $switches = document.querySelectorAll('.header__top-wrapper');
 const $bot = document.querySelector('.bot__img');
 const $grid = document.querySelector('.cases__grid');
+const $date = document.querySelector('.contacts-social__date');
 
 const colors = ['react', 'redux', 'angular', 'vue'];
 // const colors = ['#61daf9', '#764abc', '#de3433', '#53b883'];
@@ -87,6 +88,10 @@ const renderElem = elem => {
 }
 
 const renderGrid = () => cases.forEach(item => renderElem(item));
+
+const yearDate = new Date().getFullYear().toString();
+
+$date.textContent = yearDate;
 
 $switches.forEach(item => {
     item.addEventListener('click', () => {     
