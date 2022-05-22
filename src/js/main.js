@@ -70,21 +70,24 @@ const cases = [
     },
 ]
 
-const renderElem = elem => {
-	const { title, desc, img, src } = elem;
-
-	const $card = `
+const renderElem = ({ title, desc, img, src }) => {
+    const $card = `
 			<div class="cases__grid-item">
-				<a class="case__item-link" href="${src}">
+				<a 
+                    class="case__item-link" 
+                    href="${src}" 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                >
 					<div class="case__item-img">
-						<img src="images/portfolio/${img}" alt=" case image">
+						<img src="images/portfolio/${img}" alt="case image">
 					</div>
 					<h4 class="case__item-title">${title}</h4>
 					<p class="case__item-text">${desc}</p>
 				</a>
 			</div>`;
-			
-	$grid.insertAdjacentHTML('beforeend', $card);
+
+    $grid.insertAdjacentHTML('beforeend', $card);
 }
 
 const renderGrid = () => cases.forEach(item => renderElem(item));
