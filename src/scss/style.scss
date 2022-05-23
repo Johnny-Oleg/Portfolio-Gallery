@@ -1,7 +1,6 @@
 @import 'vars';
 @import 'fonts';
 @import 'normalize';
-@import 'libs';
 @import 'global';
 @import 'animations';
 
@@ -289,6 +288,11 @@ body.dark {
 		max-width: 150px;
 		max-height: 150px;
 		align-self: flex-end;
+
+		&:hover {
+			-webkit-animation: wobble-hor-bottom 0.8s both;
+	        	animation: wobble-hor-bottom 0.8s both;
+		}
 	}
 
 	.chatarea__main {

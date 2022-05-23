@@ -8,6 +8,7 @@ const $bot = document.querySelector('.bot__img');
 const $grid = document.querySelector('.cases__grid');
 const $date = document.querySelector('.contacts-social__date');
 
+let click = 0;
 const colors = ['react', 'redux', 'angular', 'vue'];
 // const colors = ['#61daf9', '#764abc', '#de3433', '#53b883'];
 
@@ -104,7 +105,17 @@ $switches.forEach(item => {
 })
 
 $bot.addEventListener('click', () => {
-    botVoice();
+    click++;
+
+    if (click >= 6) return; //TODO
+
+    if (click >= 5) {
+        botVoice({ type: 'ANGRY' });
+
+        return;
+    }
+
+    botVoice({ type: 'INTRODUCE' });
 })
 
 window.addEventListener('load', renderGrid());
