@@ -5,10 +5,13 @@ const $chatAreaOuter = document.querySelector('.chatarea__outer');
 const $buttons = document.querySelectorAll('.header__top-wrapper');
 const $decors = document.querySelectorAll('.decor');
 const $master = document.querySelector('.rotate__animate');
+const $bot = document.querySelector('.bot__img');
 
 let state = {
     response: '',
     avatar: 'default',
+    visible: false,
+    count: 0
 }
 
 const bot = {
@@ -83,15 +86,8 @@ const bot = {
                 },
             },
         },
-        {
-            sleep: {
-                avatar: 'sleep',
-            },
-        },
     ],
 }
-
-const random = arr => arr[Math.floor(Math.random() * arr.length)];
 
 const getColor = e => {
     const $elem = e.target || e.currentTarget;
@@ -105,6 +101,7 @@ const getColor = e => {
 
 const parseMessage = (action, state) => {
     const [{ greetings }, { introduce },  { wiki }, { angry }, { master }, { theme }] = bot.actions;
+    const random = arr => arr[Math.floor(Math.random() * arr.length)];
    
     console.log(action.type, action.payload, state, wiki.data);
     switch (action.type) {
@@ -159,7 +156,7 @@ const botAvatar = () => {
 
 const showBotMsg = botMsg => {
     const $msg = `
-        <p class="botarea__inner">
+        <p class="botarea__inner float-up">
             <span>${botMsg}</span> 
         </p>`;
 
@@ -169,16 +166,34 @@ const showBotMsg = botMsg => {
 }
 
 const removeBotMsg = () => {
-    const $msg = document.querySelector('.botarea__inner');
+    const $msg = document.querySelectorAll('.botarea__inner');
+    const $lastNode = $msg[$msg.length - 1];
+    
+    $msg.forEach(item => {
+        if (item !== $lastNode) {
+            setTimeout(() => {
+                item.classList.remove('float-up');
+                item.classList.add('text-blur-out');
+            }, 5000);
+            setTimeout(() => {
+                item.remove();
+            }, 10000);
+       }
+    })
 
-    setTimeout(() => {
-        $msg.remove();
-    }, 15000);
+    $lastNode.addEventListener('click', () => {
+        $lastNode.classList.remove('float-up');
+        $lastNode.classList.add('text-blur-out');
+        state.avatar = 'rip';
+
+        botAvatar();
+    })
 }
+   // $chatAreaOuter.scrollTop = $chatAreaOuter.scrollHeight;
 
-const botVoice = msg => {
+const botVoice = async msg => {
     const speech = new SpeechSynthesisUtterance();
-    state = parseMessage(msg, state);
+    state = await parseMessage(msg, state);
 
     console.log(state);
     
@@ -187,13 +202,16 @@ const botVoice = msg => {
 	botAvatar();
 
     window.speechSynthesis.speak(speech);
-    $chatAreaMain.append(showBotMsg(speech.text));
+    $chatAreaMain.append(showBotMsg(speech.text)); 
+    $chatAreaOuter.scrollTop = $chatAreaOuter.scrollHeight; //TODO
 
     removeBotMsg();
 }
 
 $buttons.forEach(item => {
-    item.addEventListener('click', () => {     
+    item.addEventListener('click', () => {  
+        if (!state.visible) return;
+        
         let theme;
 
         item.classList.contains('--light') && (theme = 'dark');
@@ -215,11 +233,26 @@ $master.addEventListener('mouseenter', e => {
     botVoice({ type: 'MASTER' });
 })
 
+$bot.addEventListener('mouseenter', () => {
+    state.count++;
+
+    if (state.avatar !== 'sleep') {
+       state.avatar = 'hey';
+       state.count = 0;
+    }
+
+    if (state.avatar === 'sleep' && state.count >= 3) {
+        state.avatar = 'huh';
+        state.count = 0;
+    }
+
+    botAvatar();
+})
+
 setInterval(() => {
     if (state.avatar !== 'default') return;
 
-    const sleep = bot.actions[bot.actions.length - 1].sleep.avatar;
-    state.avatar = sleep;
+    state.avatar = 'sleep';
 
     botAvatar();
 }, 32000);
@@ -231,5 +264,24 @@ setInterval(() => {
 
     botAvatar();
 }, 10000);
+
+const observer = new IntersectionObserver(function(elems, observer) {
+    console.log(elems);
+    elems.forEach(elem => {
+        if (!elem.isIntersecting) return;
+        
+        state.visible = !state.visible;
+        //elem.target.classList.add('slide-in-bottom');
+        botVoice({ type: 'GREETINGS' });
+
+        observer.unobserve(elem.target);
+    })
+}, {
+    root: null,
+    threshold: 1,
+    rootMargin: ''
+})
+
+observer.observe($bot);
 
 export default botVoice;

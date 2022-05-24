@@ -10,11 +10,6 @@ const $date = document.querySelector('.contacts-social__date');
 
 let click = 0;
 const colors = ['react', 'redux', 'angular', 'vue'];
-// const colors = ['#61daf9', '#764abc', '#de3433', '#53b883'];
-
-// function randomInteger(min, max) {
-//     return Math.floor(Math.random() * (max - min)) + min;
-// }
 
 const random = arr => arr[Math.floor(Math.random() * arr.length)];
 
@@ -59,15 +54,36 @@ const cases = [
         case: 4,
         title: 'Test-tz',
         desc: 'Small landing page test',
-        img: 'test-tz.png',
+        img: 'test-tz.jpg',
         src: 'https://johnny-oleg.github.io/Test-tz/',
     },
     {
         case: 5,
         title: 'E-Mentor',
         desc: 'Landing page, 2 pages',
-        img: 'e-mentor.png',
+        img: 'e-mentor.jpg',
         src: 'https://johnny-oleg.github.io/E-Mentor/',
+    },
+    {
+        case: 6,
+        title: 'Solar',
+        desc: ' Solar power plant landing page',
+        img: 'solar.png',
+        src: 'https://johnny-oleg.github.io/Solar/',
+    },
+    {
+        case: 7,
+        title: 'Safari',
+        desc: 'Safari tours landing page',
+        img: 'safari.png',
+        src: 'https://johnny-oleg.github.io/Safari/',
+    },
+    {
+        case: 8,
+        title: 'Portfolio-Gallery',
+        desc: 'My portfolio gallery',
+        img: 'portfolio-gallery.png',
+        src: 'https://johnny-oleg.github.io/Portfolio-Gallery/',
     },
 ]
 
@@ -81,7 +97,7 @@ const renderElem = ({ title, desc, img, src }) => {
                     rel="noopener noreferrer"
                 >
 					<div class="case__item-img">
-						<img src="images/portfolio/${img}" alt="case image">
+						<img loading="lazy" src="images/portfolio/${img}" alt="case image">
 					</div>
 					<h4 class="case__item-title">${title}</h4>
 					<p class="case__item-text">${desc}</p>
@@ -107,7 +123,7 @@ $switches.forEach(item => {
 $bot.addEventListener('click', () => {
     click++;
 
-    if (click >= 6) return; //TODO
+    if (click >= 6) return;
 
     if (click >= 5) {
         botVoice({ type: 'ANGRY' });
@@ -118,4 +134,26 @@ $bot.addEventListener('click', () => {
     botVoice({ type: 'INTRODUCE' });
 })
 
-window.addEventListener('load', renderGrid());
+const observer = new IntersectionObserver(function(elems, observer) {
+    console.log(elems);
+	elems.forEach(elem => {
+		if (!elem.isIntersecting) return;
+		
+		elem.target.classList.add('slide-in-bottom');
+        console.log(elem.target);
+		observer.unobserve(elem.target);
+	})
+}, {
+	root: null,
+	threshold: 0.5,
+	rootMargin: ''
+})
+
+window.addEventListener('DOMContentLoaded', renderGrid);
+
+window.addEventListener('load', () => {
+    const $gridItems = document.querySelectorAll('.cases__grid-item');
+
+    console.log($gridItems);
+    $gridItems.forEach(item => observer.observe(item));
+})

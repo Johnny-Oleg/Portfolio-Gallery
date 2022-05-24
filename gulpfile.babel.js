@@ -47,7 +47,6 @@ export function syncing() {
 	sync.init({
 		server: {
 			baseDir: 'src/',
-			// baseDir: './dist',
 		}
 	})
 }
