@@ -12,6 +12,12 @@ body {
 	text-rendering: optimizeSpeed;
 }
 
+.container {
+	max-width: 1370px;
+	margin: 0 auto;
+	padding: 0 15px;
+}
+
 .wrapper {
 	display: flex;
 	flex-direction: column;
@@ -24,10 +30,4 @@ body {
 
 .footer {
 	flex: 0 0 auto;
-}
-
-.container {
-	max-width: 1370px;
-	margin: 0 auto;
-	padding: 0 15px;
 }

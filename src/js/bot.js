@@ -19,8 +19,8 @@ const bot = {
         {
             greetings: {
                 response: [
-                    "Hello! Welcome to my Master's Gallery",
-                    "Hi, welcome to my Master's Gallery",
+                    'Hello! Welcome to my Master\'s Gallery',
+                    'Hi, welcome to my Master\'s Gallery',
                 ],
                 avatar: 'greetings',
             },
@@ -29,7 +29,7 @@ const bot = {
             introduce: {
                 response: [
                     'My name is Botty. Nice to meet you!',
-                    "I'am Botty. Nice to meet you!",
+                    'I\'am Botty. Nice to meet you!',
                 ],
                 avatar: 'introduce',
             },
@@ -103,7 +103,6 @@ const parseMessage = (action, state) => {
     const [{ greetings }, { introduce },  { wiki }, { angry }, { master }, { theme }] = bot.actions;
     const random = arr => arr[Math.floor(Math.random() * arr.length)];
    
-    console.log(action.type, action.payload, state, wiki.data);
     switch (action.type) {
         case 'GREETINGS':
             return {
@@ -173,7 +172,7 @@ const removeBotMsg = () => {
         if (item !== $lastNode) {
             setTimeout(() => {
                 item.classList.remove('float-up');
-                item.classList.add('text-blur-out');
+                item.classList.add('slide-out-top');
             }, 5000);
             setTimeout(() => {
                 item.remove();
@@ -183,28 +182,24 @@ const removeBotMsg = () => {
 
     $lastNode.addEventListener('click', () => {
         $lastNode.classList.remove('float-up');
-        $lastNode.classList.add('text-blur-out');
+        $lastNode.classList.add('slide-out-top');
         state.avatar = 'rip';
 
         botAvatar();
     })
 }
-   // $chatAreaOuter.scrollTop = $chatAreaOuter.scrollHeight;
 
 const botVoice = async msg => {
     const speech = new SpeechSynthesisUtterance();
     state = await parseMessage(msg, state);
-
-    console.log(state);
     
     speech.text = state.response;
 
-	botAvatar();
-
     window.speechSynthesis.speak(speech);
     $chatAreaMain.append(showBotMsg(speech.text)); 
-    $chatAreaOuter.scrollTop = $chatAreaOuter.scrollHeight; //TODO
-
+    $chatAreaOuter.scrollTop = $chatAreaOuter.scrollHeight;
+    
+	botAvatar();
     removeBotMsg();
 }
 
@@ -266,12 +261,10 @@ setInterval(() => {
 }, 10000);
 
 const observer = new IntersectionObserver(function(elems, observer) {
-    console.log(elems);
     elems.forEach(elem => {
         if (!elem.isIntersecting) return;
         
         state.visible = !state.visible;
-        //elem.target.classList.add('slide-in-bottom');
         botVoice({ type: 'GREETINGS' });
 
         observer.unobserve(elem.target);

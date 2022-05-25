@@ -80,7 +80,6 @@ body.dark {
 			padding: 0;
 			user-select: none;
 			border-radius: 0.375rem;
-			cursor: pointer;
 			position: relative;
 			white-space: nowrap;
 			vertical-align: middle;
@@ -88,6 +87,7 @@ body.dark {
 			outline-offset: 2px;
 			line-height: 1.2;
 			appearance: none;
+			cursor: pointer;
 
 			&.--light {
 				background-color: #FBD38D;
@@ -129,9 +129,6 @@ body.dark {
 	position: relative;
 
 	video {
-		// width: 1440px;
-		// height: 900px;
-
 		width: 100vw;
 		width: 100%;
 		height: 100vh;	
@@ -152,42 +149,61 @@ body.dark {
 
 .about {
 	height: 600px;
-	padding: 20px 0;
-	background-color: #f1e7db;
+	padding: 70px 0 20px;
 	background-color: #f3f2ef;
-	//background: linear-gradient(90deg, #515ada  0%, #efd5ff 100%);
-
-	//background-color: #8EC5FC;
-	//background-image: linear-gradient(62deg, #8EC5FC 0%, #E0C3FC 100%);
-
-
-	//background-color: #4158D0;
-	//background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
-	
 	position: relative;
 
 	&__content {
 		@include flex(space-between);
 		align-items: end;
-		gap: 30px;
+		max-height: 500px;
 	}
 
 	&__hero {
-		width: 500px;
-		height: 500px;
-		position: relative;
-		margin-left: 50px;
-		//margin-bottom: 20px;
-		display: inline-block;
-		// transform: rotateZ(45deg); //TODO
-		z-index: 2;
+		flex: 1 0 auto;
 
-		background: rgba(255, 255, 255, 0.2);
-    	border-radius: 16px;
-    	box-shadow: 0 4px 30px rgb(0 0 0 / 10%);
-    	backdrop-filter: blur(5px);
-    	-webkit-backdrop-filter: blur(5px);
-    	border: 1px solid rgba(255, 255, 255, 0.3);
+		&-content {
+			width: 450px;
+			height: 450px;
+			position: relative;
+			margin-left: 50px;
+			z-index: 2;
+	
+			background: rgba(255, 255, 255, 0.2);
+			border-radius: 16px;
+			box-shadow: 0 4px 30px rgb(0 0 0 / 10%);
+			backdrop-filter: blur(5px);
+			-webkit-backdrop-filter: blur(5px);
+			border: 1px solid rgba(255, 255, 255, 0.3);
+		}
+	}
+}
+
+.rotate__animate {
+	width: 200px;
+	height: auto;
+	position: absolute;
+	top: 30%;
+	left: 30%;
+	transform-style: preserve-3d;
+	transition: all 0.5s ease;
+
+	&-img--front {
+		width: 200px;
+		height: auto;
+		position: absolute;
+		border-radius: 50%;
+		backface-visibility: hidden;	
+	}
+
+	&-img--back {
+		width: 200px;
+		height: auto;
+		position: absolute;
+		border-radius: 50%;
+		position: absolute;
+		backface-visibility: hidden;
+		transform: rotateY(180deg);	
 	}
 }
 
@@ -234,62 +250,35 @@ body.dark {
 	max-height: 100px;
 }
 
-.rotate__animate {
-	width: 200px;
-	height: auto;
-	position: absolute;
-	top: 30%;
-	left: 30%;
-	transform-style: preserve-3d;
-	transition: all 0.5s ease;
-}
-
-.rotate__animate-img--front {
-	width: 200px;
-	height: auto;
-	position: absolute;
-	border-radius: 50%;
-	backface-visibility: hidden;	
-}
-
-.rotate__animate-img--back {
-	width: 200px;
-	height: auto;
-	position: absolute;
-	border-radius: 50%;
-	position: absolute;
-	backface-visibility: hidden;
-	transform: rotateY(180deg);	
-}
-
 .bot {
-	flex: 1 0 50%;
 	display: flex;
+	align-items: flex-end;
+	flex: 1 0 50%;
 
 	&__img {
 		max-width: 150px;
 		max-height: 150px;
 		align-self: flex-end;
+		margin-bottom: 20px;
 
 		&:hover {
+			cursor: pointer;
 			-webkit-animation: wobble-hor-bottom 0.8s both;
-	        	animation: wobble-hor-bottom 0.8s both;
+	        		animation: wobble-hor-bottom 0.8s both;
 		}
 	}
 
 	.chatarea__main {
-		flex-basis: 500px;
 		max-width: 500px;
 		height: auto;
+		flex-basis: 500px;
 		background-color: transparent;
-
 	}
 
 	.chatarea__outer {
 		width: 100%;
-		max-height: 500px;
+		max-height: 420px;
 		background-color: transparent;
-		//overflow-y: auto;
 		overflow-y: scroll;
 
     	scroll-behavior: smooth;
@@ -309,16 +298,15 @@ body.dark {
 	}
 
 	.botarea__inner span {
-		//display: inline-block;
-		// margin-bottom: 30px;
 		padding: 10px;
 		font-family: 'Orbitron', sans-serif;
 		font-size: 20px;
 		line-height: 28px;
 		font-weight: 400;
 		color: $black;
+
 		background: rgba(255, 255, 255, 0.2);
-    	border-radius: 16px;
+    	border-radius: 16px 16px 0 16px;
     	box-shadow: 0 4px 30px rgb(0 0 0 / 10%);
     	backdrop-filter: blur(5px);
     	-webkit-backdrop-filter: blur(5px);
@@ -329,7 +317,6 @@ body.dark {
 .gallery {
 	padding: 50px 0 50px;
 	background-color: #f5f7fe;
-	//background-color: #f2f2f8;
 
 	&__title {
 		margin-bottom: 50px;
@@ -344,11 +331,8 @@ body.dark {
 	display: flex;
 	flex-wrap: wrap;
 	justify-content: flex-start;
-	// gap: 40px;
 
 	&-item {
-		// width: 414px;
-		// height: 335px;
 		width: 25%;
 		max-width: auto;
 		max-height: auto;
@@ -374,10 +358,6 @@ body.dark {
 }
 
 .case__item-img {
-	// width: 295px;
-	// height: 295px;
-	// width: 100%;
-	// height: 100%;
 	width: 100%;
 	height: 0;
 	flex-grow: 1;
@@ -386,7 +366,6 @@ body.dark {
 	border-radius: 40px;
 	overflow: hidden;
 	position: relative;
-	
 	transition: all 0.5s ease-in-out;
 
 	img {
@@ -437,17 +416,14 @@ body.dark {
 
 .footer {
 	max-height: 60px;
-	// background-color: #f1e7db;
-	// background-color: rgba(255, 255, 255, 0.8);
+	padding: 10px 0;
 	background-color: rgba(118, 74, 188, 0.9);
 	border-top: 1px solid rgba(0, 0, 0, 0.3);
-	padding: 10px 0;
 
 	&__contacts {
 		max-width: 400px;
 		@include flex(space-between);
 		margin: 0 auto;
-		//padding: 10px 0;
 
 		&-social {
 			@include flex(space-between);
@@ -473,11 +449,6 @@ body.dark {
 .contacts-social__text {
 	font-family: 'Orbitron', sans-serif;
 	font-weight: 500;
-}
-
-.contacts-social__icons {
-
-
 }
 
 .contacts-social__link {

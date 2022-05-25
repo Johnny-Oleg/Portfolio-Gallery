@@ -53,7 +53,6 @@ export function syncing() {
 
 export function scripts() {
 	return src([
-		'node_modules/jquery/dist/jquery.js',
 		'src/js/main.js'
 	])
 		.pipe(concat('main.min.js'))

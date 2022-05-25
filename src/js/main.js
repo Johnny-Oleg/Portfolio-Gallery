@@ -15,8 +15,7 @@ const random = arr => arr[Math.floor(Math.random() * arr.length)];
 
 const isDark = () => localStorage.getItem('dark');
 
-const toggleClass = () =>
-    document.querySelector('body').classList.toggle('dark');
+const toggleClass = () => document.querySelector('body').classList.toggle('dark');
 
 const toggleLocalStorageItem = () => {
     isDark()
@@ -33,21 +32,21 @@ const cases = [
         case: 1,
         title: 'John\'s Blog',
         desc: 'Blog with 4 pages',
-        img: "john's-blog.png",
+        img: "john's-blog.jpg",
         src: 'https://johnny-oleg.github.io/John-s-Blog/',
     },
     {
         case: 2,	
         title: 'Moon-River',
         desc: 'Jewelry landing page',
-        img: 'moon-river.png',
+        img: 'moon-river.jpg',
         src: 'https://johnny-oleg.github.io/Moon-River/',
     },
     {
         case: 3,
         title: 'Coffee-Serve',
         desc: 'Coffee serve landing page',
-        img: 'coffee-serve.png',
+        img: 'coffee-serve.jpg',
         src: 'https://johnny-oleg.github.io/Coffee-Serve/',
     },
     {
@@ -68,21 +67,21 @@ const cases = [
         case: 6,
         title: 'Solar',
         desc: ' Solar power plant landing page',
-        img: 'solar.png',
+        img: 'solar.jpg',
         src: 'https://johnny-oleg.github.io/Solar/',
     },
     {
         case: 7,
         title: 'Safari',
         desc: 'Safari tours landing page',
-        img: 'safari.png',
+        img: 'safari.jpg',
         src: 'https://johnny-oleg.github.io/Safari/',
     },
     {
         case: 8,
         title: 'Portfolio-Gallery',
         desc: 'My portfolio gallery',
-        img: 'portfolio-gallery.png',
+        img: 'portfolio-gallery.jpg',
         src: 'https://johnny-oleg.github.io/Portfolio-Gallery/',
     },
 ]
@@ -135,12 +134,10 @@ $bot.addEventListener('click', () => {
 })
 
 const observer = new IntersectionObserver(function(elems, observer) {
-    console.log(elems);
 	elems.forEach(elem => {
 		if (!elem.isIntersecting) return;
 		
 		elem.target.classList.add('slide-in-bottom');
-        console.log(elem.target);
 		observer.unobserve(elem.target);
 	})
 }, {
@@ -154,6 +151,5 @@ window.addEventListener('DOMContentLoaded', renderGrid);
 window.addEventListener('load', () => {
     const $gridItems = document.querySelectorAll('.cases__grid-item');
 
-    console.log($gridItems);
     $gridItems.forEach(item => observer.observe(item));
 })
