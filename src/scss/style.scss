@@ -139,7 +139,7 @@ body.dark {
 		z-index: -20;
 	}
 
-	h1 {
+	&__title {
 		font-size: 58px;
 		line-height: 70px;
 		font-weight: 700;
@@ -190,7 +190,7 @@ body.dark {
 
 	&-img--front {
 		width: 200px;
-		height: auto;
+		height: 200px;
 		position: absolute;
 		border-radius: 50%;
 		backface-visibility: hidden;	
@@ -198,7 +198,7 @@ body.dark {
 
 	&-img--back {
 		width: 200px;
-		height: auto;
+		height: 200px;
 		position: absolute;
 		border-radius: 50%;
 		position: absolute;
