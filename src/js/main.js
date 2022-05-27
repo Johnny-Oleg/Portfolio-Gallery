@@ -142,7 +142,7 @@ const observer = new IntersectionObserver(function(elems, observer) {
 	})
 }, {
 	root: null,
-	threshold: 0.5,
+	threshold: 0.3,
 	rootMargin: ''
 })
 
@@ -152,4 +152,11 @@ window.addEventListener('load', () => {
     const $gridItems = document.querySelectorAll('.cases__grid-item');
 
     $gridItems.forEach(item => observer.observe(item));
+
+    //* Safari 3.0+ '[object HTMLElementConstructor]' check if browser is Safari - remove class
+    const $hero = document.querySelector('.about__hero-content');
+
+    const isSafari = /constructor/i.test(window.HTMLElement) || (function (p) { return p.toString() === '[object SafariRemoteNotification]'; })(!window['safari'] || safari.pushNotification);
+
+    isSafari && ($hero.classList.remove('glass-blur'));
 })
