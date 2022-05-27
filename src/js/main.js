@@ -1,6 +1,6 @@
 'use strict';
 
-import botVoice from './bot.js';
+import botVoice from './bot.min.js';
 
 const $decors = document.querySelectorAll('.decor');
 const $switches = document.querySelectorAll('.header__top-wrapper');
@@ -142,7 +142,7 @@ const observer = new IntersectionObserver(function(elems, observer) {
 	})
 }, {
 	root: null,
-	threshold: 0.3,
+	threshold: 0.5,
 	rootMargin: ''
 })
 

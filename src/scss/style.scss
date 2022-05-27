@@ -1,8 +1,8 @@
-@use 'vars';
-@use 'fonts';
-@use 'normalize';
-@use 'global';
-@use 'animations';
+@import 'vars';
+@import 'fonts';
+@import 'normalize';
+@import 'global';
+@import 'animations';
 
 @mixin theme($dark: true) {
 	@if $dark {
@@ -24,7 +24,7 @@
 		}
 
 		.footer {
-			@extend glassmorphism;
+			@extend .glassmorphism;
 
 			.contacts-social__text {
 				color: $white;
@@ -49,7 +49,7 @@
 	right: 0;
 	z-index: 99;
 
-	@extend glassmorphism;
+	@extend .glassmorphism;
 	
 	&__top {
 		padding: 8px;
@@ -305,14 +305,14 @@
 			color: $black;
 			border-radius: 16px 16px 0 16px;
 	
-			@extend glassmorphism;
+			@extend .glassmorphism;
 		}
 	}
 }
 
 .gallery {
 	min-height: 100vh;
-	padding: 50px 0 50px;
+	padding: 50px 0 150px;
 	background-color: #f5f7fe;
 
 	&__title {
@@ -335,7 +335,7 @@
 		max-height: auto;
 		padding: 20px;
 		opacity: 0;        
-		transform: translateY(500px);
+		transform: translateY(150px);
 	}
 }
 
@@ -414,6 +414,7 @@
 
 .footer {
 	max-height: 60px;
+	margin-top: auto;
 	padding: 10px 0;
 	background-color: rgba(118, 74, 188, 0.9);
 	border-top: 1px solid rgba(0, 0, 0, 0.3);
@@ -459,4 +460,4 @@
 	vertical-align: middle;
 }
 
-@use 'media';
+@import 'media';

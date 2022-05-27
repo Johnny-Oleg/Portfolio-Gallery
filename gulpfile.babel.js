@@ -86,7 +86,9 @@ function building() {
 		'src/css/style.min.css',
 		'src/fonts/**/*',
 		'src/js/main.min.js',
-		'src/*.html'
+		'src/js/bot.min.js',
+		'src/*.html',
+		'video/*.mp4'
 	], { base: 'src' })
 		.pipe(dest('dist'));
 }
